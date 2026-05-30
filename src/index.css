@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0A;
+  --color-accent-teal: #14B8A6;
+  --color-panel: #1F2937;
+  --color-accent-brass: #D4AF37;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-zinc-100 selection:bg-accent-teal/30;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Minimal solid cards */
+  .solid-card {
+    @apply bg-zinc-900 border border-white/5 rounded-lg;
+  }
+
+  .solid-panel {
+    @apply bg-[#1F2937] border border-white/5 rounded-lg;
+  }
+
+  .teal-ring-focus {
+    @apply focus:ring-2 focus:ring-accent-teal focus:outline-none focus:border-accent-teal;
+  }
+}
+
+.shake-animation {
+  animation: shake 0.1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink-cursor {
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full hover:bg-accent-teal/50 transition-colors;
+}
